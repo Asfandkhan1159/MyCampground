@@ -1,12 +1,13 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-console.log(process.env.SECRET)
+// console.log(process.env.SECRET)
 const express = require('express');
-const mongoose = require('mongoose');
 const path = require('path');
+const mongoose = require('mongoose');
+
 const ejsMate = require('ejs-mate');
-const Joi = require('joi');
+
 const session = require('express-session');
 const flash = require('connect-flash');
 const ExpressError = require('./utils/ExpressError');
@@ -28,16 +29,16 @@ mongoose.connect('mongodb://localhost:27017/YelpCAMP')
         console.log("Oh no.!! error")
         console.log(err)
 
-    })
+    });
 const app = express();
 app.engine('ejs', ejsMate); /* using ejs mate package after requiring it */
 
 app.set('view engine', 'ejs')
 
-app.set('views', path.join(__dirname, 'views'))
-app.use(express.urlencoded({ extended: true }))
-app.use(methodOverride('_method'))
-app.use(express.static(path.join(__dirname, 'Public')))
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'Public')));
 const sessionConfig = {
     secret: 'thisshouldbetterbeasecret!',
     resave: false,

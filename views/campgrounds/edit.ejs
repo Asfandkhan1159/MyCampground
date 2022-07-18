@@ -40,22 +40,28 @@
                         Looks good!
                     </div>
                 </div>
-                <div class="mb-3 custom-file">
+                <!-- <div class="mb-3 custom-file">
                     <label for="image" class="form-label custom-file">Upload more Images</label>
                     <input class="form-control" type="file" id="formFile" name="image" multiple>
-                </div>
-                <!-- This is only for testing -->
-                <!-- <div class="mb-3">
-                    <% campground.images.forEach(function(img,i) {%>
-                        <img src="<%= img.url %> " class="img-thumbnail" alt="">
-                        <% }) %>
                 </div> -->
                 <div class="mb-3">
+                    <div class="form-file custom-file">
+                        <input type="file" class="form-file-input" id="image" name="image" multiple>
+                        <label class="form-file-label" for="image">
+                            <span class="form-file-text custom-file-label">Add more image(s)...</span>
+                            <span class="form-file-button">Browse</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- This is only for testing -->
+
+                <div class="mb-3">
                     <% campground.images.forEach(function(img, i){ %>
-                        <img src="<%=img.url%> " class="img-thumbnail" alt="">
+                        <img src="<%=img.thumbnail%> " class="img-thumbnail" alt="">
                         <div class="form-check-inline">
-                            <input type="checkbox">
+                            <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
                         </div>
+                        <label for="image-<%=i%>">Delete?</label>
                         <% }) %>
 
                 </div>
